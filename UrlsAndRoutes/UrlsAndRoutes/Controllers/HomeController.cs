@@ -13,11 +13,11 @@ namespace UrlsAndRoutes.Controllers
             ViewBag.Action = "Index";
             return View("ActionName");
         }
-        public ActionResult CustomVariable()
+        public ActionResult CustomVariable(String id)
         {
             ViewBag.Controller = "Home";
             ViewBag.Action = "CustomVariable";
-            ViewBag.CustomVariable = RouteData.Values["id"];
+            ViewBag.CustomVariable = id;
             return View();
         }
     }
