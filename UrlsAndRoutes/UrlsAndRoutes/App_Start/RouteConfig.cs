@@ -11,8 +11,17 @@ namespace UrlsAndRoutes
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapRoute("MyRoute", "{controller}/{action}/{id}",
+            new
+            {
+                 controller = "Home",
+                 action = "Index",
+                 id = "DefaultId"
+            });
+   
+            //alising a controller and an action
             routes.MapRoute("ShopSchema2", "Shop/OldAction",new { controller = "Home", action = "Index" });
-
+            //Mixing Static URL Segments and Default Values
             routes.MapRoute("ShopSchema", "Shop/{action}",new { controller = "Home" });
 
             routes.MapRoute("", "X{controller}/{action}");
