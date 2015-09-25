@@ -25,6 +25,5 @@ C:\Users\Kasun\Documents\GitHub\UrlsAndRoutes\UrlsAndRoutes\UrlsAndRoutes\bin\Sy
 C:\Users\Kasun\Documents\GitHub\UrlsAndRoutes\UrlsAndRoutes\UrlsAndRoutes\bin\System.Web.WebPages.xml
 C:\Users\Kasun\Documents\GitHub\UrlsAndRoutes\UrlsAndRoutes\UrlsAndRoutes\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Kasun\Documents\GitHub\UrlsAndRoutes\UrlsAndRoutes\UrlsAndRoutes\bin\System.Web.WebPages.Razor.xml
-C:\Users\Kasun\Documents\GitHub\UrlsAndRoutes\UrlsAndRoutes\UrlsAndRoutes\obj\Debug\UrlsAndRoutes.csprojResolveAssemblyReference.cache
 C:\Users\Kasun\Documents\GitHub\UrlsAndRoutes\UrlsAndRoutes\UrlsAndRoutes\obj\Debug\UrlsAndRoutes.dll
 C:\Users\Kasun\Documents\GitHub\UrlsAndRoutes\UrlsAndRoutes\UrlsAndRoutes\obj\Debug\UrlsAndRoutes.pdb

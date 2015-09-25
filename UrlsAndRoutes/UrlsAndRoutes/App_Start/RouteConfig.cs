@@ -18,7 +18,11 @@ namespace UrlsAndRoutes
                  controller = "Home",
                  action = "Index",
                  id = UrlParameter.Optional
-            });
+            },
+            new[] { "UrlsAndRoutes.AdditionalControllers" }
+            );
+            
+
    
             //alising a controller and an action
             routes.MapRoute("ShopSchema2", "Shop/OldAction",new { controller = "Home", action = "Index" });
