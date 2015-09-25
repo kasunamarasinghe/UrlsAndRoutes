@@ -12,6 +12,14 @@ namespace UrlsAndRoutes
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapRoute("MyRoute", "{controller}/{action}/{id}",
+            new
+                {
+                 controller = "Home",
+                 action = "Index",
+                 id = UrlParameter.Optional
+                });
+
             routes.RouteExistingFiles = true;
             //Bypass the routing system
             routes.MapRoute("DiskFile", "Content/StaticContent.html",
@@ -31,7 +39,7 @@ namespace UrlsAndRoutes
             new[] { "UrlsAndRoutes.AdditionalControllers" });
 
             //construct a route using a regular expression and http method
-            routes.MapRoute("MyRoute", "{controller}/{action}/{id}/{*catchall}",
+            routes.MapRoute("MyRoutes", "{controller}/{action}/{id}/{*catchall}",
             new { controller = "Home", action = "Index", id = UrlParameter.Optional },
             new { controller = "^H.*", action = "Index|About",
             httpMethod = new HttpMethodConstraint("GET") },
@@ -73,12 +81,14 @@ namespace UrlsAndRoutes
    
             //alising a controller and an action
             routes.MapRoute("ShopSchema2", "Shop/OldAction",new { controller = "Home", action = "Index" });
+
             //Mixing Static URL Segments and Default Values
             routes.MapRoute("ShopSchema", "Shop/{action}",new { controller = "Home" });
 
             routes.MapRoute("", "X{controller}/{action}");
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
             routes.MapRoute( name: "Default", url: "{controller}/{action}/{id}", defaults: new
             {
                 controller = "Home",
