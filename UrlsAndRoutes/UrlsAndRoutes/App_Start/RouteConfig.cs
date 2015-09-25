@@ -11,7 +11,26 @@ namespace UrlsAndRoutes
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            //URL parameter optional
+            //construct a route using a regular expression
+            routes.MapRoute("MyRoute", "{controller}/{action}/{id}/{*catchall}",
+            new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+            new { controller = "^H.*" },
+            new[] { "URLsAndRoutes.Controllers" });
+
+            //disabling fallback namespaces
+            Route myRoute = routes.MapRoute("AddContollerRoute",
+            "Home/{action}/{id}/{*catchall}",
+            new
+            {
+                controller = "Home",
+                action = "Index",
+                id = UrlParameter.Optional
+            },
+            new[] { "UrlsAndRoutes.AdditionalControllers" });
+            myRoute.DataTokens["UseNamespaceFallback"] = false;
+
+
+            //Multiple routes
             routes.MapRoute("MyRoute", "{controller}/{action}/{id}/{*catchall}",
             new
             {
@@ -21,8 +40,16 @@ namespace UrlsAndRoutes
             },
             new[] { "UrlsAndRoutes.AdditionalControllers" }
             );
-            
-
+            //Multiple routes
+           routes.MapRoute("MyRoute", "{controller}/{action}/{id}/{*catchall}",
+          new
+          {
+              controller = "Home",
+              action = "Index",
+              id = UrlParameter.Optional
+          },
+          new[] { "UrlsAndRoutes.Controllers" }
+          );
    
             //alising a controller and an action
             routes.MapRoute("ShopSchema2", "Shop/OldAction",new { controller = "Home", action = "Index" });
