@@ -12,6 +12,15 @@ namespace UrlsAndRoutes
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.RouteExistingFiles = true;
+            //Bypass the routing system
+            routes.MapRoute("DiskFile", "Content/StaticContent.html",
+            new
+            {
+                 controller = "Customer",
+                 action = "List",
+            });
+
            // Applying a Custom Constraint in a Route
             routes.MapRoute("ChromeRoute", "{*catchall}",
             new { controller = "Home", action = "Index" },
