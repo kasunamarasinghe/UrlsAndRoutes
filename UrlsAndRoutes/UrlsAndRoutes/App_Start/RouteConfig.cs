@@ -11,12 +11,13 @@ namespace UrlsAndRoutes
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            //URL parameter optional
             routes.MapRoute("MyRoute", "{controller}/{action}/{id}",
             new
             {
                  controller = "Home",
                  action = "Index",
-                 id = "DefaultId"
+                 id = UrlParameter.Optional
             });
    
             //alising a controller and an action
