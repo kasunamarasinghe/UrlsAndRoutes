@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using UrlsAndRoutes.Infrastructure;
 
 namespace UrlsAndRoutes
 {
@@ -11,10 +12,20 @@ namespace UrlsAndRoutes
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            //construct a route using a regular expression
+           // Applying a Custom Constraint in a Route
+            routes.MapRoute("ChromeRoute", "{*catchall}",
+            new { controller = "Home", action = "Index" },
+            new
+            {
+              customConstraint = new UserAgentConstraint("Chrome")
+            },
+            new[] { "UrlsAndRoutes.AdditionalControllers" });
+
+            //construct a route using a regular expression and http method
             routes.MapRoute("MyRoute", "{controller}/{action}/{id}/{*catchall}",
             new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-            new { controller = "^H.*" },
+            new { controller = "^H.*", action = "Index|About",
+            httpMethod = new HttpMethodConstraint("GET") },
             new[] { "URLsAndRoutes.Controllers" });
 
             //disabling fallback namespaces
@@ -31,7 +42,7 @@ namespace UrlsAndRoutes
 
 
             //Multiple routes
-            routes.MapRoute("MyRoute", "{controller}/{action}/{id}/{*catchall}",
+            routes.MapRoute("MyRoute1", "{controller}/{action}/{id}/{*catchall}",
             new
             {
                  controller = "Home",
@@ -41,7 +52,7 @@ namespace UrlsAndRoutes
             new[] { "UrlsAndRoutes.AdditionalControllers" }
             );
             //Multiple routes
-           routes.MapRoute("MyRoute", "{controller}/{action}/{id}/{*catchall}",
+           routes.MapRoute("MyRoute2", "{controller}/{action}/{id}/{*catchall}",
           new
           {
               controller = "Home",
